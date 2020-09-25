@@ -1,0 +1,16 @@
+
+import com.kgn.business.rules.order.entity.BusinessRuleEngine
+
+rule "physical_product"
+when
+	$businessRuleEngineObj:BusinessRuleEngine(orderOption=="physical_product");
+then 
+	$businessRuleEngineObj.setOrderConfText("generate a packing slip for shipping");
+end;
+
+rule "book"
+when
+	$businessRuleEngineObj:BusinessRuleEngine(orderOption=="book");
+then 
+	$businessRuleEngineObj.setOrderConfText("create a duplicate packing slip for the royalty department");
+end;
