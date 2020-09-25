@@ -5,12 +5,36 @@ rule "physical_product"
 when
 	$businessRuleEngineObj:BusinessRuleEngine(orderOption=="physical_product");
 then 
-	$businessRuleEngineObj.setOrderConfText("generate a packing slip for shipping");
+	$businessRuleEngineObj.setOrderConfText("generate a packing slip for shipping & generate a commission payment to the agent");
 end;
 
 rule "book"
 when
 	$businessRuleEngineObj:BusinessRuleEngine(orderOption=="book");
 then 
-	$businessRuleEngineObj.setOrderConfText("create a duplicate packing slip for the royalty department");
+	$businessRuleEngineObj.setOrderConfText("create a duplicate packing slip for the royalty department & generate a commission payment to the agent");
 end;
+
+rule "membership"
+when
+	$businessRuleEngineObj:BusinessRuleEngine(orderOption=="membership");
+then 
+	$businessRuleEngineObj.setOrderConfText("activate that membership & e-mail the owner and inform them of the activation/upgrade");
+end;
+
+rule "upgrade_to_a_membership"
+when
+	$businessRuleEngineObj:BusinessRuleEngine(orderOption=="upgrade_to_a_membership");
+then 
+	$businessRuleEngineObj.setOrderConfText("apply the upgrade & e-mail the owner and inform them of the activation/upgrade");
+end;
+
+rule "Learning_to_ Ski"
+when
+	$businessRuleEngineObj:BusinessRuleEngine(orderOption=="Learning_to_ Ski");
+then 
+	$businessRuleEngineObj.setOrderConfText("add a free “First Aid” video to the packing slip (the result of a court decision in 1997)");
+end;
+
+
+
